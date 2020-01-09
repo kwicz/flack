@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Sign In
+{% endblock %}
+
+{% block main %}
+<br>
+<h1>Welcome to Flack!</h1>
+
+<!--Display Name input-->
+
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+        <div class="card card-signin my-5">
+          <div class="card-body">
+            <h5 class="card-title text-center">Sign In</h5>
+            
+            <form class="form-signin" method="post" id="form">
+              <div class="form-label-group">
+                <input class="form-control" id="name" autocomplete="off" autofocus placeholder="Display Name" type="text">
+                <br>
+                <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit" href="channel">Enter</button>
+              </div>
+            </form>
+          
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
+
+{% block script %}
+
+<!--Connect index.js-->
+<script type="text/javascript" src="{{ url_for('static', filename='index.js') }}"></script>
+
+{% endblock %}

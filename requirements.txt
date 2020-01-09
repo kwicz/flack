@@ -1,0 +1,5 @@
+Flask
+Flask-SocketIO
+socketIO-client
+eventlet
+datetime

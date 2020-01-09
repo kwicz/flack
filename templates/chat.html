@@ -1,0 +1,86 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Chat
+{% endblock %}
+
+{% block main %}
+
+<a href="/"><h1>Flack</h1></a>
+
+<div class="container-fluid">
+    <div class="row" id="chatContainer">
+        
+        <!--Channel Menu-->
+        <div class="col-md-3" id="column">
+                    
+            <!--Create new channel-->
+            <br>
+            <h5>Create a New Room</h5>
+            <form id="createChannel">
+                <input class="form-control" id="newChannel" name="newChannel" autocomplete="off" autofocus placeholder="New Channel" type="text" name="newChannel">
+                <br>
+                <input class="btn btn-primary btn-block text-uppercase" type="submit" value="Create">
+            </form>
+
+            <!--Existing channels-->
+            <br>
+            <h5>Join a Room</h5>
+            <form id="selectChannel">
+                <div class="selectWrapper">
+                    <select class="form-control" data-channel="channel" id="channel">
+                        {% for channel in channels %}
+                            <option value="{{ channel }}">{{ channel }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <br>
+                <button class="btn btn-primary btn-block text-uppercase" type="button" id="go">Go</button>
+            </form>
+        </div>
+
+        <!--Chat Window-->
+        <div class="col-md-6" id="column">
+            <br>
+            <h5>Chat Room: <var id="channelHeader"></var></h5>
+            <div id="chatWindow" style="text-align: left; padding: 6px 12px">
+                <ul id="messages" class="list-unstyled"></ul>
+            </div>
+            <br>
+            <!--Chat Input-->
+            <form id="chatInput" class="form">
+                <div class="form-group">
+                    <input type="text" class="form-control" id="myMessage" placeholder="Type your message here..." />
+                </div>
+                <button class="btn btn-primary btn-block text-uppercase" id="sendbutton" type="submit">Send
+                </button>
+            </form>
+            <br>
+        </div>
+
+        <!--User Window-->
+        <div class="col-md-3" id="column">
+            
+            <!--Greet user-->
+            <div>
+                <br>
+                <h5>Chatting as <var id="displayName"></var>.</h5>
+                <a href="/" class="btn btn-primary btn-block text-uppercase" role="button" id="changeName" type="submit">Change</a>
+            </div>
+            <br>
+        	<div id="userWindow">
+                <h5>In this room: </h5>
+                <ul id="users" class="list-unstyled"></ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block script %}
+  
+  <!--Connect index.js-->
+  <script type="text/javascript" src="{{ url_for('static', filename='chat.js') }}"></script>
+
+{% endblock %}
